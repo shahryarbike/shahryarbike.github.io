@@ -46616,7 +46616,7 @@ this.a5(new A.az4(this,q))
 if(!q){q=$.aL4()
 s=A.ao("\u0628\u0631\u0627\u06cc \u0646\u0635\u0628\u060c \u0627\u0632 \u0645\u0646\u0648\u06cc \u0645\u0631\u0648\u0631\u06af\u0631 \u06af\u0632\u06cc\u0646\u0647\u200c\u06cc \xab\u0627\u0641\u0632\u0648\u062f\u0646 \u0628\u0647 \u0635\u0641\u062d\u0647 \u0627\u0635\u0644\u06cc\xbb \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f",r,r,r,B.Df,r,r)
 q.N4(0,B.f5,B.lj,A.aX(12),s,B.y,!0,B.NA,!0,B.Dm,B.a2A,B.a2T)}},
-aav(){if(this.d&&this.e)A.aM_($.aC(),"/on_boarding",t.z)},
+aav(){A.aM_($.aC(),"/on_boarding",t.z)},
 OR(a,b,c,d,e){var s,r,q=null,p=A.aX(20),o=A.dw(B.h.aG(0.15),B.q,1),n=B.h.aG(0.07),m=A.b([new A.db(1,B.bo,c?B.iY.aG(0.5):B.iZ.aG(0.4),B.Ul,25)],t.G),l=A.ao(e,q,q,q,B.jJ,B.cG,q),k=A.ao(a,q,q,q,B.nK,B.cG,q),j=c?B.iY:B.iZ
 j=A.oo(q,q,j,q,q,q,q,q,q,B.n,q,q,q,q,new A.bP(A.aX(14),B.r),q,q,q,q,q)
 s=c?B.r4:B.dd
@@ -46624,15 +46624,12 @@ j=A.r5(s,A.ao(c?"\u0686\u06a9 \u0634\u062f":"\u0686\u06a9 \u06a9\u0646\u06cc\u06
 s=A.VW(q,q,q,q,q,q,q,q,q,c?B.iY:B.iZ,q,q,q,q,q,q,q,q,q,q)
 r=t.p
 return A.ay(q,new A.aD(B.at,A.bg(A.b([l,B.dc,k,B.nt,A.bD(A.b([j,A.Hb(!1,A.ao(b,q,q,q,q,q,q),q,q,q,q,q,q,new A.az3(),q,s)],r),B.l,B.d3,B.o,0,q)],r),B.bF,q,B.p,B.o),q),B.j,q,q,new A.aH(n,q,o,p,m,q,B.kA,B.t),q,q,q,B.qc,B.fA,q,q,300)},
-E(a){var s,r,q,p=this,o=null,n=p.d&&p.e,m=A.by(a,o,t.w).w,l=p.OR("\u0628\u0631\u0627\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u062e\u062f\u0645\u0627\u062a\u060c \u0627\u062a\u0635\u0627\u0644 \u0628\u0647 \u0633\u0631\u0648\u0631 \u0628\u0627\u06cc\u062f \u0628\u0631\u0642\u0631\u0627\u0631 \u0628\u0627\u0634\u062f.","\u0631\u0627\u0647\u0646\u0645\u0627",p.d,p.gaas(),"\u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0633\u0631\u0648\u0631"),k=p.OR("\u0628\u0631\u0627\u06cc \u062a\u0634\u062e\u06cc\u0635 \u0645\u0648\u0642\u0639\u06cc\u062a \u0634\u0645\u0627\u060c \u0644\u0637\u0641\u0627\u064b GPS \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f.","\u0631\u0627\u0647\u0646\u0645\u0627",p.e,p.gaan(),"\u0645\u0648\u0642\u0639\u06cc\u062a \u0645\u06a9\u0627\u0646\u06cc"),j=A.aX(20),i=A.dw(B.h.aG(0.15),B.q,1),h=B.h.aG(0.07),g=A.b([new A.db(0,B.bo,B.h.aG(0.15),B.Uk,15)],t.G),f=p.f?B.iY:B.T8
-f=A.oo(o,o,f,o,o,o,o,o,o,B.n,o,o,o,o,new A.bP(A.aX(14),B.r),o,o,o,o,o)
+E(a){var s,r,q,p=this,o=null,n=A.by(a,o,t.w).w,m=p.OR("\u0628\u0631\u0627\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u062e\u062f\u0645\u0627\u062a\u060c \u0627\u062a\u0635\u0627\u0644 \u0628\u0647 \u0633\u0631\u0648\u0631 \u0628\u0627\u06cc\u062f \u0628\u0631\u0642\u0631\u0627\u0631 \u0628\u0627\u0634\u062f.","\u0631\u0627\u0647\u0646\u0645\u0627",p.d,p.gaas(),"\u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0633\u0631\u0648\u0631"),l=p.OR("\u0628\u0631\u0627\u06cc \u062a\u0634\u062e\u06cc\u0635 \u0645\u0648\u0642\u0639\u06cc\u062a \u0634\u0645\u0627\u060c \u0644\u0637\u0641\u0627\u064b GPS \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f.","\u0631\u0627\u0647\u0646\u0645\u0627",p.e,p.gaan(),"\u0645\u0648\u0642\u0639\u06cc\u062a \u0645\u06a9\u0627\u0646\u06cc"),k=A.aX(20),j=A.dw(B.h.aG(0.15),B.q,1),i=B.h.aG(0.07),h=A.b([new A.db(0,B.bo,B.h.aG(0.15),B.Uk,15)],t.G),g=p.f?B.iY:B.T8
+g=A.oo(o,o,g,o,o,o,o,o,o,B.n,o,o,o,o,new A.bP(A.aX(14),B.r),o,o,o,o,o)
 s=p.f
 r=s?B.r4:B.dd
 q=t.p
-q=A.b([l,k,A.ay(o,new A.aD(B.qd,A.bg(A.b([B.a2i,B.dc,B.a2o,B.nt,A.r5(r,A.ao(s?"\u0646\u0635\u0628 \u0634\u062f\u0647":"\u0646\u0635\u0628 \u06a9\u0646\u06cc\u062f",o,o,o,B.jI,o,o),p.gaal(),f)],q),B.bF,o,B.p,B.o),o),B.j,o,o,new A.aH(h,o,i,j,g,o,B.kA,B.t),o,o,o,B.qc,o,o,o,300),B.cj,new A.DG(new A.aza(p),o),B.eR],q)
-if(n)q.push(new A.aO(300,o,new A.f3("\u0634\u0631\u0648\u0639 \u06a9\u0646\u06cc\u062f",p.gaau(),!0,o),o))
-if(n)q.push(B.eR)
-return new A.o7(A.fs(o,B.x,A.h6(new A.e_(new A.a8(0,600,m.a.b,1/0),A.dD(A.bg(q,B.l,o,B.c_,B.o),o,o),o),B.qh,o,B.N),o,o,!1,o,o),o)}}
+return new A.o7(A.fs(o,B.x,A.h6(new A.e_(new A.a8(0,600,n.a.b,1/0),A.dD(A.bg(A.b([m,l,A.ay(o,new A.aD(B.qd,A.bg(A.b([B.a2i,B.dc,B.a2o,B.nt,A.r5(r,A.ao(s?"\u0646\u0635\u0628 \u0634\u062f\u0647":"\u0646\u0635\u0628 \u06a9\u0646\u06cc\u062f",o,o,o,B.jI,o,o),p.gaal(),g)],q),B.bF,o,B.p,B.o),o),B.j,o,o,new A.aH(i,o,j,k,h,o,B.kA,B.t),o,o,o,B.qc,o,o,o,300),B.cj,new A.DG(new A.aza(p),o),B.eR,new A.aO(300,o,new A.f3("\u0634\u0631\u0648\u0639 \u06a9\u0646\u06cc\u062f",p.gaau(),!0,o),o),B.eR],q),B.l,o,B.c_,B.o),o,o),o),B.qh,o,B.N),o,o,!1,o,o),o)}}
 A.az7.prototype={
 $0(){return this.a.d=!1},
 $S:0}
