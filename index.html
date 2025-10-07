@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="اپلیکیشن شهر یار - مدیریت هوشمند دوچرخه و مسیرها.">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="manifest" href="manifest.json">
+
+  <title>شهر یار</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #splash {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .logo {
+      width: 120px;
+      border-radius: 50%;
+      animation: logoPop 1s ease-out forwards, logoPulse 2s ease-in-out infinite;
+    }
+
+    .text {
+      width: 200px;
+      opacity: 0;
+      margin-top: 20px;
+      animation: fadeInText 1s ease-in forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes logoPop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.7s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Canvas background -->
+  <canvas id="bg"></canvas>
+
+  <!-- Splash -->
+  <div id="splash">
+    <img src="assets/img/logo2.png" class="logo" alt="logo">
+    <img src="assets/img/logo3.png" class="text" alt="app name">
+  </div>
+
+  <script src="flutter_bootstrap.js" defer></script>
+
+  <script>
+    /* 🎨 Animated mesh-like gradient with bubble motion */
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let points = [];
+
+    const colors = ['#62358A', '#2DAFE6'];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      createPoints();
+    }
+
+    function createPoints() {
+      const total = Math.floor((width * height) / 25000);
+      points = [];
+      for (let i = 0; i < total; i++) {
+        points.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: 200 + Math.random() * 200,
+          dx: (Math.random() - 0.5) * 0.6,
+          dy: (Math.random() - 0.5) * 0.6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          phase: Math.random() * 2 * Math.PI
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, colors[0]);
+      gradient.addColorStop(1, colors[1]);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      for (const p of points) {
+        const rad = p.r + Math.sin(Date.now() / 600 + p.phase) * 30;
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad);
+        grad.addColorStop(0, `${p.color}90`);
+        grad.addColorStop(1, `${p.color}00`);
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
+        ctx.fill();
+
+        // bubble motion
+        p.x += p.dx * 2;
+        p.y += p.dy * 2;
+        if (p.x < -p.r) p.x = width + p.r;
+        if (p.x > width + p.r) p.x = -p.r;
+        if (p.y < -p.r) p.y = height + p.r;
+        if (p.y > height + p.r) p.y = -p.r;
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+
+    /* 🕓 Remove splash after Flutter ready */
+    window.addEventListener('flutter-first-frame', () => {
+      const splash = document.getElementById('splash');
+      splash.classList.add('fade-out');
+      setTimeout(() => splash.remove(), 700);
+    });
+  </script>
+</body>
+</html>
