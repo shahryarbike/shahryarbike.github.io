@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <base href="/">
+  <!-- اصلاح مسیر base برای GitHub Pages -->
+  <base href="./">
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -94,12 +96,10 @@
   <script src="flutter_bootstrap.js" defer></script>
 
   <script>
-    /* 🎨 Animated mesh-like gradient with bubble motion */
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
     let width, height;
     let points = [];
-
     const colors = ['#62358A', '#2DAFE6'];
 
     function resize() {
@@ -142,7 +142,6 @@
         ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
         ctx.fill();
 
-        // bubble motion
         p.x += p.dx * 2;
         p.y += p.dy * 2;
         if (p.x < -p.r) p.x = width + p.r;
@@ -157,7 +156,6 @@
     resize();
     draw();
 
-    /* 🕓 Remove splash after Flutter ready */
     window.addEventListener('flutter-first-frame', () => {
       const splash = document.getElementById('splash');
       splash.classList.add('fade-out');
