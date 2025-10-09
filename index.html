@@ -13,17 +13,21 @@
 
   <title>شهر یار</title>
 
+  <!-- فونت فارسی Vazirmatn -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Vazirmatn', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       background: black;
+      direction: rtl;
     }
 
     canvas#bg {
@@ -59,6 +63,16 @@
       animation-delay: 1s;
     }
 
+    .loading-text {
+      color: white;
+      font-size: 18px;
+      margin-top: 30px;
+      opacity: 0;
+      animation: fadeInText 1s ease-in forwards;
+      animation-delay: 2s;
+      letter-spacing: 0.5px;
+    }
+
     @keyframes logoPop {
       0% { transform: scale(0); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
@@ -89,6 +103,7 @@
   <div id="splash">
     <img src="assets/assets/img/logo2.png" class="logo" alt="logo">
     <img src="assets/assets/img/logo3.png" class="text" alt="app name">
+    <div class="loading-text">در حال بارگذاری...</div>
   </div>
 
   <script src="flutter_bootstrap.js" defer></script>
@@ -166,4 +181,3 @@
   </script>
 </body>
 </html>
-
