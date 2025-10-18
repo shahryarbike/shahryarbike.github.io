@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
   <base href="/">
   <meta charset="UTF-8">
@@ -16,7 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -88,24 +90,56 @@
     }
 
     @keyframes slide {
-      0% { left: -40%; width: 40%; }
-      50% { left: 100%; width: 60%; }
-      100% { left: -40%; width: 40%; }
+      0% {
+        left: -40%;
+        width: 40%;
+      }
+
+      50% {
+        left: 100%;
+        width: 60%;
+      }
+
+      100% {
+        left: -40%;
+        width: 40%;
+      }
     }
 
     @keyframes logoPop {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     @keyframes logoPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
     }
 
     @keyframes fadeInText {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .fade-out {
@@ -195,6 +229,33 @@
       splash.classList.add('fade-out');
       setTimeout(() => splash.remove(), 700);
     });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('flutter_service_worker.js').then(reg => {
+        reg.onupdatefound = () => {
+          const newWorker = reg.installing;
+          newWorker.onstatechange = () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              console.log("🔄 New version detected. Reloading...");
+              newWorker.postMessage({ action: 'skipWaiting' });
+            }
+          };
+        };
+      });
+
+      let refreshing;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
+    }
+
+
+
   </script>
+
+
 </body>
+
 </html>
