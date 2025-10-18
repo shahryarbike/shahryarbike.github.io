@@ -230,31 +230,11 @@
       setTimeout(() => splash.remove(), 700);
     });
 
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('flutter_service_worker.js').then(reg => {
-        reg.onupdatefound = () => {
-          const newWorker = reg.installing;
-          newWorker.onstatechange = () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              console.log("🔄 New version detected. Reloading...");
-              newWorker.postMessage({ action: 'skipWaiting' });
-            }
-          };
-        };
-      });
-
-      let refreshing;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (refreshing) return;
-        refreshing = true;
-        window.location.reload();
-      });
-    }
-
-
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
 
   </script>
-
 
 </body>
 
