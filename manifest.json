@@ -1,10 +1,10 @@
 {
     "name": "شهر یار",
-    "short_name": "شهر یار",
+    "short_name": "shahryar",
     "start_url": ".",
     "display": "fullscreen",
-    "background_color": "#000000FF",
-    "theme_color": "#000000FF",
+    "background_color": "#2DAFE6",
+    "theme_color": "#62358A",
     "description": "سیستم هوشمند حمل و نقل پاک",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
