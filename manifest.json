@@ -1,11 +1,11 @@
 {
-    "name": "bike",
-    "short_name": "bike",
+    "name": "شهر یار",
+    "short_name": "shahryar",
     "start_url": ".",
-    "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "display": "fullscreen",
+    "background_color": "#2DAFE6",
+    "theme_color": "#62358A",
+    "description": "سیستم هوشمند حمل و نقل پاک",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

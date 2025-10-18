@@ -225,6 +225,7 @@ class CompiledApp {
       _780: x0 => x0.timeStamp,
       _781: x0 => x0.type,
       _783: (x0,x1,x2,x3) => x0.initEvent(x1,x2,x3),
+      _789: x0 => x0.baseURI,
       _790: x0 => x0.firstChild,
       _794: x0 => x0.parentElement,
       _796: (x0,x1) => { x0.textContent = x1 },
@@ -419,6 +420,8 @@ class CompiledApp {
       _1220: x0 => x0.selectedTrack,
       _1221: x0 => x0.repetitionCount,
       _1222: x0 => x0.frameCount,
+      _1270: (x0,x1) => x0.createElement(x1),
+      _1276: (x0,x1,x2) => x0.addEventListener(x1,x2),
       _1277: (x0,x1) => x0.querySelector(x1),
       _1278: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1278(f,arguments.length,x0) }),
       _1279: (x0,x1) => x0.removeChild(x1),
@@ -438,32 +441,42 @@ class CompiledApp {
       _1294: x0 => ({video: x0}),
       _1295: x0 => ({facingMode: x0}),
       _1296: (x0,x1) => x0.getUserMedia(x1),
-      _1300: (x0,x1) => x0.createElement(x1),
-      _1307: (x0,x1,x2,x3) => x0.open(x1,x2,x3),
-      _1332: (x0,x1) => x0.query(x1),
-      _1333: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1333(f,arguments.length,x0) }),
+      _1297: x0 => x0.reload(),
+      _1299: (x0,x1,x2,x3) => x0.addEventListener(x1,x2,x3),
+      _1300: (x0,x1,x2,x3) => x0.removeEventListener(x1,x2,x3),
+      _1301: (x0,x1) => x0.createElement(x1),
+      _1308: (x0,x1,x2,x3) => x0.open(x1,x2,x3),
+      _1320: x0 => x0.decode(),
+      _1321: (x0,x1,x2,x3) => x0.open(x1,x2,x3),
+      _1322: (x0,x1,x2) => x0.setRequestHeader(x1,x2),
+      _1323: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1323(f,arguments.length,x0) }),
+      _1324: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1324(f,arguments.length,x0) }),
+      _1325: x0 => x0.send(),
+      _1326: () => new XMLHttpRequest(),
+      _1333: (x0,x1) => x0.query(x1),
       _1334: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1334(f,arguments.length,x0) }),
-      _1335: (x0,x1,x2) => ({enableHighAccuracy: x0,timeout: x1,maximumAge: x2}),
-      _1336: (x0,x1,x2,x3) => x0.getCurrentPosition(x1,x2,x3),
-      _1337: (x0,x1) => x0.clearWatch(x1),
-      _1338: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1338(f,arguments.length,x0) }),
+      _1335: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1335(f,arguments.length,x0) }),
+      _1336: (x0,x1,x2) => ({enableHighAccuracy: x0,timeout: x1,maximumAge: x2}),
+      _1337: (x0,x1,x2,x3) => x0.getCurrentPosition(x1,x2,x3),
+      _1338: (x0,x1) => x0.clearWatch(x1),
       _1339: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1339(f,arguments.length,x0) }),
-      _1340: (x0,x1,x2,x3) => x0.watchPosition(x1,x2,x3),
-      _1341: (x0,x1) => x0.getItem(x1),
-      _1343: (x0,x1,x2) => x0.setItem(x1,x2),
-      _1344: x0 => x0.barcodeFormat,
-      _1345: x0 => x0.text,
-      _1346: x0 => x0.rawBytes,
-      _1347: x0 => x0.resultPoints,
-      _1349: Date.now,
-      _1351: s => new Date(s * 1000).getTimezoneOffset() * 60,
-      _1352: s => {
+      _1340: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1340(f,arguments.length,x0) }),
+      _1341: (x0,x1,x2,x3) => x0.watchPosition(x1,x2,x3),
+      _1342: (x0,x1) => x0.getItem(x1),
+      _1344: (x0,x1,x2) => x0.setItem(x1,x2),
+      _1345: x0 => x0.barcodeFormat,
+      _1346: x0 => x0.text,
+      _1347: x0 => x0.rawBytes,
+      _1348: x0 => x0.resultPoints,
+      _1350: Date.now,
+      _1352: s => new Date(s * 1000).getTimezoneOffset() * 60,
+      _1353: s => {
         if (!/^\s*[+-]?(?:Infinity|NaN|(?:\.\d+|\d+(?:\.\d*)?)(?:[eE][+-]?\d+)?)\s*$/.test(s)) {
           return NaN;
         }
         return parseFloat(s);
       },
-      _1353: () => {
+      _1354: () => {
         let stackString = new Error().stack.toString();
         let frames = stackString.split('\n');
         let drop = 2;
@@ -472,51 +485,52 @@ class CompiledApp {
         }
         return frames.slice(drop).join('\n');
       },
-      _1354: () => typeof dartUseDateNowForTicks !== "undefined",
-      _1355: () => 1000 * performance.now(),
-      _1356: () => Date.now(),
-      _1357: () => {
+      _1355: () => typeof dartUseDateNowForTicks !== "undefined",
+      _1356: () => 1000 * performance.now(),
+      _1357: () => Date.now(),
+      _1358: () => {
         // On browsers return `globalThis.location.href`
         if (globalThis.location != null) {
           return globalThis.location.href;
         }
         return null;
       },
-      _1358: () => {
+      _1359: () => {
         return typeof process != "undefined" &&
                Object.prototype.toString.call(process) == "[object process]" &&
                process.platform == "win32"
       },
-      _1359: () => new WeakMap(),
-      _1360: (map, o) => map.get(o),
-      _1361: (map, o, v) => map.set(o, v),
-      _1362: x0 => new WeakRef(x0),
-      _1363: x0 => x0.deref(),
-      _1370: () => globalThis.WeakRef,
-      _1374: s => JSON.stringify(s),
-      _1375: s => printToConsole(s),
-      _1376: (o, p, r) => o.replaceAll(p, () => r),
-      _1378: Function.prototype.call.bind(String.prototype.toLowerCase),
-      _1379: s => s.toUpperCase(),
-      _1380: s => s.trim(),
-      _1381: s => s.trimLeft(),
-      _1382: s => s.trimRight(),
-      _1383: (string, times) => string.repeat(times),
-      _1384: Function.prototype.call.bind(String.prototype.indexOf),
-      _1385: (s, p, i) => s.lastIndexOf(p, i),
-      _1386: (string, token) => string.split(token),
-      _1387: Object.is,
-      _1388: o => o instanceof Array,
-      _1389: (a, i) => a.push(i),
-      _1393: a => a.pop(),
-      _1394: (a, i) => a.splice(i, 1),
-      _1395: (a, s) => a.join(s),
-      _1396: (a, s, e) => a.slice(s, e),
-      _1398: (a, b) => a == b ? 0 : (a > b ? 1 : -1),
-      _1399: a => a.length,
-      _1401: (a, i) => a[i],
-      _1402: (a, i, v) => a[i] = v,
-      _1404: o => {
+      _1360: () => new WeakMap(),
+      _1361: (map, o) => map.get(o),
+      _1362: (map, o, v) => map.set(o, v),
+      _1363: x0 => new WeakRef(x0),
+      _1364: x0 => x0.deref(),
+      _1371: () => globalThis.WeakRef,
+      _1375: s => JSON.stringify(s),
+      _1376: s => printToConsole(s),
+      _1377: (o, p, r) => o.replaceAll(p, () => r),
+      _1378: (o, p, r) => o.replace(p, () => r),
+      _1379: Function.prototype.call.bind(String.prototype.toLowerCase),
+      _1380: s => s.toUpperCase(),
+      _1381: s => s.trim(),
+      _1382: s => s.trimLeft(),
+      _1383: s => s.trimRight(),
+      _1384: (string, times) => string.repeat(times),
+      _1385: Function.prototype.call.bind(String.prototype.indexOf),
+      _1386: (s, p, i) => s.lastIndexOf(p, i),
+      _1387: (string, token) => string.split(token),
+      _1388: Object.is,
+      _1389: o => o instanceof Array,
+      _1390: (a, i) => a.push(i),
+      _1394: a => a.pop(),
+      _1395: (a, i) => a.splice(i, 1),
+      _1396: (a, s) => a.join(s),
+      _1397: (a, s, e) => a.slice(s, e),
+      _1399: (a, b) => a == b ? 0 : (a > b ? 1 : -1),
+      _1400: a => a.length,
+      _1402: (a, i) => a[i],
+      _1403: (a, i, v) => a[i] = v,
+      _1405: o => {
         if (o instanceof ArrayBuffer) return 0;
         if (globalThis.SharedArrayBuffer !== undefined &&
             o instanceof SharedArrayBuffer) {
@@ -524,126 +538,128 @@ class CompiledApp {
         }
         return 2;
       },
-      _1405: (o, offsetInBytes, lengthInBytes) => {
+      _1406: (o, offsetInBytes, lengthInBytes) => {
         var dst = new ArrayBuffer(lengthInBytes);
         new Uint8Array(dst).set(new Uint8Array(o, offsetInBytes, lengthInBytes));
         return new DataView(dst);
       },
-      _1407: o => o instanceof Uint8Array,
-      _1408: (o, start, length) => new Uint8Array(o.buffer, o.byteOffset + start, length),
-      _1409: o => o instanceof Int8Array,
-      _1410: (o, start, length) => new Int8Array(o.buffer, o.byteOffset + start, length),
-      _1411: o => o instanceof Uint8ClampedArray,
-      _1412: (o, start, length) => new Uint8ClampedArray(o.buffer, o.byteOffset + start, length),
-      _1413: o => o instanceof Uint16Array,
-      _1414: (o, start, length) => new Uint16Array(o.buffer, o.byteOffset + start, length),
-      _1415: o => o instanceof Int16Array,
-      _1416: (o, start, length) => new Int16Array(o.buffer, o.byteOffset + start, length),
-      _1417: o => o instanceof Uint32Array,
-      _1418: (o, start, length) => new Uint32Array(o.buffer, o.byteOffset + start, length),
-      _1419: o => o instanceof Int32Array,
-      _1420: (o, start, length) => new Int32Array(o.buffer, o.byteOffset + start, length),
-      _1422: (o, start, length) => new BigInt64Array(o.buffer, o.byteOffset + start, length),
-      _1423: o => o instanceof Float32Array,
-      _1424: (o, start, length) => new Float32Array(o.buffer, o.byteOffset + start, length),
-      _1425: o => o instanceof Float64Array,
-      _1426: (o, start, length) => new Float64Array(o.buffer, o.byteOffset + start, length),
-      _1427: (t, s) => t.set(s),
-      _1428: l => new DataView(new ArrayBuffer(l)),
-      _1429: (o) => new DataView(o.buffer, o.byteOffset, o.byteLength),
-      _1431: o => o.buffer,
-      _1432: o => o.byteOffset,
-      _1433: Function.prototype.call.bind(Object.getOwnPropertyDescriptor(DataView.prototype, 'byteLength').get),
-      _1434: (b, o) => new DataView(b, o),
-      _1435: (b, o, l) => new DataView(b, o, l),
-      _1436: Function.prototype.call.bind(DataView.prototype.getUint8),
-      _1437: Function.prototype.call.bind(DataView.prototype.setUint8),
-      _1438: Function.prototype.call.bind(DataView.prototype.getInt8),
-      _1439: Function.prototype.call.bind(DataView.prototype.setInt8),
-      _1440: Function.prototype.call.bind(DataView.prototype.getUint16),
-      _1441: Function.prototype.call.bind(DataView.prototype.setUint16),
-      _1442: Function.prototype.call.bind(DataView.prototype.getInt16),
-      _1443: Function.prototype.call.bind(DataView.prototype.setInt16),
-      _1444: Function.prototype.call.bind(DataView.prototype.getUint32),
-      _1445: Function.prototype.call.bind(DataView.prototype.setUint32),
-      _1446: Function.prototype.call.bind(DataView.prototype.getInt32),
-      _1447: Function.prototype.call.bind(DataView.prototype.setInt32),
-      _1450: Function.prototype.call.bind(DataView.prototype.getBigInt64),
-      _1451: Function.prototype.call.bind(DataView.prototype.setBigInt64),
-      _1452: Function.prototype.call.bind(DataView.prototype.getFloat32),
-      _1453: Function.prototype.call.bind(DataView.prototype.setFloat32),
-      _1454: Function.prototype.call.bind(DataView.prototype.getFloat64),
-      _1455: Function.prototype.call.bind(DataView.prototype.setFloat64),
-      _1468: (ms, c) =>
+      _1408: o => o instanceof Uint8Array,
+      _1409: (o, start, length) => new Uint8Array(o.buffer, o.byteOffset + start, length),
+      _1410: o => o instanceof Int8Array,
+      _1411: (o, start, length) => new Int8Array(o.buffer, o.byteOffset + start, length),
+      _1412: o => o instanceof Uint8ClampedArray,
+      _1413: (o, start, length) => new Uint8ClampedArray(o.buffer, o.byteOffset + start, length),
+      _1414: o => o instanceof Uint16Array,
+      _1415: (o, start, length) => new Uint16Array(o.buffer, o.byteOffset + start, length),
+      _1416: o => o instanceof Int16Array,
+      _1417: (o, start, length) => new Int16Array(o.buffer, o.byteOffset + start, length),
+      _1418: o => o instanceof Uint32Array,
+      _1419: (o, start, length) => new Uint32Array(o.buffer, o.byteOffset + start, length),
+      _1420: o => o instanceof Int32Array,
+      _1421: (o, start, length) => new Int32Array(o.buffer, o.byteOffset + start, length),
+      _1423: (o, start, length) => new BigInt64Array(o.buffer, o.byteOffset + start, length),
+      _1424: o => o instanceof Float32Array,
+      _1425: (o, start, length) => new Float32Array(o.buffer, o.byteOffset + start, length),
+      _1426: o => o instanceof Float64Array,
+      _1427: (o, start, length) => new Float64Array(o.buffer, o.byteOffset + start, length),
+      _1428: (t, s) => t.set(s),
+      _1429: l => new DataView(new ArrayBuffer(l)),
+      _1430: (o) => new DataView(o.buffer, o.byteOffset, o.byteLength),
+      _1432: o => o.buffer,
+      _1433: o => o.byteOffset,
+      _1434: Function.prototype.call.bind(Object.getOwnPropertyDescriptor(DataView.prototype, 'byteLength').get),
+      _1435: (b, o) => new DataView(b, o),
+      _1436: (b, o, l) => new DataView(b, o, l),
+      _1437: Function.prototype.call.bind(DataView.prototype.getUint8),
+      _1438: Function.prototype.call.bind(DataView.prototype.setUint8),
+      _1439: Function.prototype.call.bind(DataView.prototype.getInt8),
+      _1440: Function.prototype.call.bind(DataView.prototype.setInt8),
+      _1441: Function.prototype.call.bind(DataView.prototype.getUint16),
+      _1442: Function.prototype.call.bind(DataView.prototype.setUint16),
+      _1443: Function.prototype.call.bind(DataView.prototype.getInt16),
+      _1444: Function.prototype.call.bind(DataView.prototype.setInt16),
+      _1445: Function.prototype.call.bind(DataView.prototype.getUint32),
+      _1446: Function.prototype.call.bind(DataView.prototype.setUint32),
+      _1447: Function.prototype.call.bind(DataView.prototype.getInt32),
+      _1448: Function.prototype.call.bind(DataView.prototype.setInt32),
+      _1451: Function.prototype.call.bind(DataView.prototype.getBigInt64),
+      _1452: Function.prototype.call.bind(DataView.prototype.setBigInt64),
+      _1453: Function.prototype.call.bind(DataView.prototype.getFloat32),
+      _1454: Function.prototype.call.bind(DataView.prototype.setFloat32),
+      _1455: Function.prototype.call.bind(DataView.prototype.getFloat64),
+      _1456: Function.prototype.call.bind(DataView.prototype.setFloat64),
+      _1469: (ms, c) =>
       setTimeout(() => dartInstance.exports.$invokeCallback(c),ms),
-      _1469: (handle) => clearTimeout(handle),
-      _1470: (ms, c) =>
+      _1470: (handle) => clearTimeout(handle),
+      _1471: (ms, c) =>
       setInterval(() => dartInstance.exports.$invokeCallback(c), ms),
-      _1471: (handle) => clearInterval(handle),
-      _1472: (c) =>
+      _1472: (handle) => clearInterval(handle),
+      _1473: (c) =>
       queueMicrotask(() => dartInstance.exports.$invokeCallback(c)),
-      _1473: () => Date.now(),
-      _1478: o => Object.keys(o),
-      _1479: () => new AbortController(),
-      _1480: x0 => x0.abort(),
-      _1481: (x0,x1,x2,x3,x4,x5) => ({method: x0,headers: x1,body: x2,credentials: x3,redirect: x4,signal: x5}),
-      _1482: (x0,x1) => globalThis.fetch(x0,x1),
-      _1483: (x0,x1) => x0.get(x1),
-      _1484: f => finalizeWrapper(f, function(x0,x1,x2) { return dartInstance.exports._1484(f,arguments.length,x0,x1,x2) }),
-      _1485: (x0,x1) => x0.forEach(x1),
-      _1486: x0 => x0.getReader(),
-      _1487: x0 => x0.read(),
-      _1488: x0 => x0.cancel(),
-      _1498: x0 => x0.attachStreamToVideo,
-      _1500: x0 => x0.decodeContinuously,
-      _1504: x0 => x0.reset,
-      _1506: x0 => x0.stopContinuousDecode,
-      _1508: x0 => x0.stream,
-      _1509: x0 => x0.videoElement,
-      _1510: (x0,x1) => x0.key(x1),
-      _1512: x0 => x0.facingMode,
-      _1513: x0 => x0.getSettings(),
-      _1514: (x0,x1) => ({width: x0,height: x1}),
-      _1515: (x0,x1,x2) => ({width: x0,height: x1,facingMode: x2}),
-      _1524: (s, m) => {
+      _1474: () => Date.now(),
+      _1479: o => Object.keys(o),
+      _1480: () => new AbortController(),
+      _1481: x0 => x0.abort(),
+      _1482: (x0,x1,x2,x3,x4,x5) => ({method: x0,headers: x1,body: x2,credentials: x3,redirect: x4,signal: x5}),
+      _1483: (x0,x1) => globalThis.fetch(x0,x1),
+      _1484: (x0,x1) => x0.get(x1),
+      _1485: f => finalizeWrapper(f, function(x0,x1,x2) { return dartInstance.exports._1485(f,arguments.length,x0,x1,x2) }),
+      _1486: (x0,x1) => x0.forEach(x1),
+      _1487: x0 => x0.getReader(),
+      _1488: x0 => x0.read(),
+      _1489: x0 => x0.cancel(),
+      _1493: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1493(f,arguments.length,x0) }),
+      _1494: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._1494(f,arguments.length,x0) }),
+      _1499: x0 => x0.attachStreamToVideo,
+      _1501: x0 => x0.decodeContinuously,
+      _1505: x0 => x0.reset,
+      _1507: x0 => x0.stopContinuousDecode,
+      _1509: x0 => x0.stream,
+      _1510: x0 => x0.videoElement,
+      _1511: (x0,x1) => x0.key(x1),
+      _1513: x0 => x0.facingMode,
+      _1514: x0 => x0.getSettings(),
+      _1515: (x0,x1) => ({width: x0,height: x1}),
+      _1516: (x0,x1,x2) => ({width: x0,height: x1,facingMode: x2}),
+      _1525: (s, m) => {
         try {
           return new RegExp(s, m);
         } catch (e) {
           return String(e);
         }
       },
-      _1525: (x0,x1) => x0.exec(x1),
-      _1526: (x0,x1) => x0.test(x1),
-      _1527: x0 => x0.pop(),
-      _1529: o => o === undefined,
-      _1531: o => typeof o === 'function' && o[jsWrappedDartFunctionSymbol] === true,
-      _1533: o => {
+      _1526: (x0,x1) => x0.exec(x1),
+      _1527: (x0,x1) => x0.test(x1),
+      _1528: x0 => x0.pop(),
+      _1530: o => o === undefined,
+      _1532: o => typeof o === 'function' && o[jsWrappedDartFunctionSymbol] === true,
+      _1534: o => {
         const proto = Object.getPrototypeOf(o);
         return proto === Object.prototype || proto === null;
       },
-      _1534: o => o instanceof RegExp,
-      _1535: (l, r) => l === r,
-      _1536: o => o,
+      _1535: o => o instanceof RegExp,
+      _1536: (l, r) => l === r,
       _1537: o => o,
       _1538: o => o,
-      _1539: b => !!b,
-      _1540: o => o.length,
-      _1542: (o, i) => o[i],
-      _1543: f => f.dartFunction,
-      _1544: () => ({}),
-      _1545: () => [],
-      _1547: () => globalThis,
-      _1548: (constructor, args) => {
+      _1539: o => o,
+      _1540: b => !!b,
+      _1541: o => o.length,
+      _1543: (o, i) => o[i],
+      _1544: f => f.dartFunction,
+      _1545: () => ({}),
+      _1546: () => [],
+      _1548: () => globalThis,
+      _1549: (constructor, args) => {
         const factoryFunction = constructor.bind.apply(
             constructor, [null, ...args]);
         return new factoryFunction();
       },
-      _1550: (o, p) => o[p],
-      _1551: (o, p, v) => o[p] = v,
-      _1552: (o, m, a) => o[m].apply(o, a),
-      _1554: o => String(o),
-      _1555: (p, s, f) => p.then(s, (e) => f(e, e === undefined)),
-      _1556: o => {
+      _1551: (o, p) => o[p],
+      _1552: (o, p, v) => o[p] = v,
+      _1553: (o, m, a) => o[m].apply(o, a),
+      _1555: o => String(o),
+      _1556: (p, s, f) => p.then(s, (e) => f(e, e === undefined)),
+      _1557: o => {
         if (o === undefined) return 1;
         var type = typeof o;
         if (type === 'boolean') return 2;
@@ -670,116 +686,132 @@ class CompiledApp {
         }
         return 18;
       },
-      _1557: o => [o],
-      _1558: (o0, o1) => [o0, o1],
-      _1559: (o0, o1, o2) => [o0, o1, o2],
-      _1560: (o0, o1, o2, o3) => [o0, o1, o2, o3],
-      _1561: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1558: o => [o],
+      _1559: (o0, o1) => [o0, o1],
+      _1560: (o0, o1, o2) => [o0, o1, o2],
+      _1561: (o0, o1, o2, o3) => [o0, o1, o2, o3],
+      _1562: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const getValue = dartInstance.exports.$wasmI8ArrayGet;
         for (let i = 0; i < length; i++) {
           jsArray[jsArrayOffset + i] = getValue(wasmArray, wasmArrayOffset + i);
         }
       },
-      _1562: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1563: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const setValue = dartInstance.exports.$wasmI8ArraySet;
         for (let i = 0; i < length; i++) {
           setValue(wasmArray, wasmArrayOffset + i, jsArray[jsArrayOffset + i]);
         }
       },
-      _1565: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1566: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const getValue = dartInstance.exports.$wasmI32ArrayGet;
         for (let i = 0; i < length; i++) {
           jsArray[jsArrayOffset + i] = getValue(wasmArray, wasmArrayOffset + i);
         }
       },
-      _1566: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1567: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const setValue = dartInstance.exports.$wasmI32ArraySet;
         for (let i = 0; i < length; i++) {
           setValue(wasmArray, wasmArrayOffset + i, jsArray[jsArrayOffset + i]);
         }
       },
-      _1567: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1568: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const getValue = dartInstance.exports.$wasmF32ArrayGet;
         for (let i = 0; i < length; i++) {
           jsArray[jsArrayOffset + i] = getValue(wasmArray, wasmArrayOffset + i);
         }
       },
-      _1568: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1569: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const setValue = dartInstance.exports.$wasmF32ArraySet;
         for (let i = 0; i < length; i++) {
           setValue(wasmArray, wasmArrayOffset + i, jsArray[jsArrayOffset + i]);
         }
       },
-      _1569: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1570: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const getValue = dartInstance.exports.$wasmF64ArrayGet;
         for (let i = 0; i < length; i++) {
           jsArray[jsArrayOffset + i] = getValue(wasmArray, wasmArrayOffset + i);
         }
       },
-      _1570: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
+      _1571: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const setValue = dartInstance.exports.$wasmF64ArraySet;
         for (let i = 0; i < length; i++) {
           setValue(wasmArray, wasmArrayOffset + i, jsArray[jsArrayOffset + i]);
         }
       },
-      _1571: x0 => new ArrayBuffer(x0),
-      _1572: s => {
+      _1572: x0 => new ArrayBuffer(x0),
+      _1573: s => {
         if (/[[\]{}()*+?.\\^$|]/.test(s)) {
             s = s.replace(/[[\]{}()*+?.\\^$|]/g, '\\$&');
         }
         return s;
       },
-      _1574: x0 => x0.index,
-      _1576: x0 => x0.flags,
-      _1577: x0 => x0.multiline,
-      _1578: x0 => x0.ignoreCase,
-      _1579: x0 => x0.unicode,
-      _1580: x0 => x0.dotAll,
-      _1581: (x0,x1) => { x0.lastIndex = x1 },
-      _1582: (o, p) => p in o,
-      _1583: (o, p) => o[p],
-      _1586: x0 => x0.random(),
-      _1587: (x0,x1) => x0.getRandomValues(x1),
-      _1588: () => globalThis.crypto,
-      _1589: () => globalThis.Math,
-      _1590: Function.prototype.call.bind(Number.prototype.toString),
-      _1591: Function.prototype.call.bind(BigInt.prototype.toString),
-      _1592: Function.prototype.call.bind(Number.prototype.toString),
-      _1593: (d, digits) => d.toFixed(digits),
-      _1640: x0 => x0.x,
-      _1641: x0 => x0.y,
-      _1738: (x0,x1) => { x0.lang = x1 },
-      _1767: x0 => x0.style,
-      _1826: (x0,x1) => { x0.onerror = x1 },
-      _1842: (x0,x1) => { x0.onload = x1 },
-      _1866: (x0,x1) => { x0.onpause = x1 },
-      _1868: (x0,x1) => { x0.onplay = x1 },
-      _2339: x0 => x0.videoWidth,
-      _2340: x0 => x0.videoHeight,
-      _2387: x0 => x0.paused,
-      _2402: (x0,x1) => { x0.controls = x1 },
-      _3001: (x0,x1) => { x0.src = x1 },
-      _3003: (x0,x1) => { x0.type = x1 },
-      _3007: (x0,x1) => { x0.async = x1 },
-      _3009: (x0,x1) => { x0.defer = x1 },
-      _3011: (x0,x1) => { x0.crossOrigin = x1 },
-      _3470: () => globalThis.window,
-      _3532: x0 => x0.navigator,
-      _3796: x0 => x0.localStorage,
+      _1575: x0 => x0.index,
+      _1577: x0 => x0.flags,
+      _1578: x0 => x0.multiline,
+      _1579: x0 => x0.ignoreCase,
+      _1580: x0 => x0.unicode,
+      _1581: x0 => x0.dotAll,
+      _1582: (x0,x1) => { x0.lastIndex = x1 },
+      _1583: (o, p) => p in o,
+      _1584: (o, p) => o[p],
+      _1587: x0 => x0.random(),
+      _1588: (x0,x1) => x0.getRandomValues(x1),
+      _1589: () => globalThis.crypto,
+      _1590: () => globalThis.Math,
+      _1591: Function.prototype.call.bind(Number.prototype.toString),
+      _1592: Function.prototype.call.bind(BigInt.prototype.toString),
+      _1593: Function.prototype.call.bind(Number.prototype.toString),
+      _1594: (d, digits) => d.toFixed(digits),
+      _1598: () => globalThis.document,
+      _1604: (x0,x1) => { x0.height = x1 },
+      _1606: (x0,x1) => { x0.width = x1 },
+      _1615: x0 => x0.style,
+      _1618: x0 => x0.src,
+      _1619: (x0,x1) => { x0.src = x1 },
+      _1620: x0 => x0.naturalWidth,
+      _1621: x0 => x0.naturalHeight,
+      _1637: x0 => x0.status,
+      _1638: (x0,x1) => { x0.responseType = x1 },
+      _1640: x0 => x0.response,
+      _1641: x0 => x0.x,
+      _1642: x0 => x0.y,
+      _1739: (x0,x1) => { x0.lang = x1 },
+      _1768: x0 => x0.style,
+      _1827: (x0,x1) => { x0.onerror = x1 },
+      _1843: (x0,x1) => { x0.onload = x1 },
+      _1867: (x0,x1) => { x0.onpause = x1 },
+      _1869: (x0,x1) => { x0.onplay = x1 },
+      _2340: x0 => x0.videoWidth,
+      _2341: x0 => x0.videoHeight,
+      _2388: x0 => x0.paused,
+      _2403: (x0,x1) => { x0.controls = x1 },
+      _3002: (x0,x1) => { x0.src = x1 },
+      _3004: (x0,x1) => { x0.type = x1 },
+      _3008: (x0,x1) => { x0.async = x1 },
+      _3010: (x0,x1) => { x0.defer = x1 },
+      _3012: (x0,x1) => { x0.crossOrigin = x1 },
+      _3471: () => globalThis.window,
+      _3511: x0 => x0.document,
+      _3514: x0 => x0.location,
+      _3533: x0 => x0.navigator,
+      _3797: x0 => x0.localStorage,
       _3902: x0 => x0.geolocation,
       _3905: x0 => x0.mediaDevices,
       _3907: x0 => x0.permissions,
       _3908: x0 => x0.maxTouchPoints,
+      _3911: x0 => x0.serviceWorker,
       _3918: x0 => x0.platform,
       _3921: x0 => x0.userAgent,
       _3927: x0 => x0.onLine,
       _4129: x0 => x0.length,
       _6070: x0 => x0.signal,
+      _6126: x0 => x0.baseURI,
       _6143: () => globalThis.document,
       _6227: x0 => x0.head,
       _6557: (x0,x1) => { x0.id = x1 },
       _7903: x0 => x0.value,
       _7905: x0 => x0.done,
+      _8199: x0 => x0.ready,
       _8607: x0 => x0.url,
       _8609: x0 => x0.status,
       _8611: x0 => x0.statusText,
