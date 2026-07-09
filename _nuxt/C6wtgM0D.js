@@ -1,0 +1,1 @@
+import{j as t,l as o,n as a,p as n,$ as s,c,o as r}from"./hCyTFMIK.js";const d=t({__name:"index",setup(i){const e=o();return a(()=>{e.loadToken(),n(s(e.isAuthenticated))}),(u,p)=>(r(),c("div"))}});export{d as default};

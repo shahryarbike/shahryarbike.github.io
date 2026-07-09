@@ -1,0 +1,30 @@
+{
+  "id": "/",
+  "name": "SHAHRYAR",
+  "short_name": "SHAHRYAR",
+  "description": "سیستم هوشمند حمل و نقل پاک",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#62358A",
+  "theme_color": "#62358A",
+  "prefer_related_applications": false,
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    { "src": "/icons/Icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/Icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/Icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icons/Icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable any" }
+  ],
+  "display_override": ["standalone", "fullscreen", "minimal-ui"],
+  "shortcuts": [
+    {
+      "name": "ورود سریع",
+      "short_name": "ورود",
+      "url": "/",
+      "icons": [{ "src": "/icons/Icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

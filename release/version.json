@@ -1,0 +1,10 @@
+{
+  "version": "1.45.0",
+  "build": 45,
+  "force": false,
+  "web_promo": true,
+  "web_promo_message": "برای تجربه کاربری بهتر، اپلیکیشن موبایل را نصب کنید.",
+  "title": "نسخه 1.45.0 منتشر شد",
+  "message": "رفع باگ‌ها و اضافه شدن امکانات جدید",
+  "download": "https://github.com/mehdinoorzehi/sbike_releases/releases/download/1.45.0/shahryar1.45.0.apk"
+}

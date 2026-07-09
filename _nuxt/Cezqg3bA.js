@@ -1,0 +1,1 @@
+import{i as e}from"./Bl41MW9A.js";import{j as t,ao as a,p as n,c as s,o as r}from"./hCyTFMIK.js";const _=t({__name:"[...slug]",setup(c){const o=a();return e(o.path)||n("/not-found"),(p,u)=>(r(),s("div"))}});export{_ as default};
