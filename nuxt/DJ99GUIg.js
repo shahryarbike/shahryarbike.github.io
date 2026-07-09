@@ -1,0 +1,1 @@
+import{a2 as s,r as o}from"./CFOLWpXS.js";const u=s("ride",()=>{const t=o("103"),r=o("1"),i=o("ایستگاه میدان آزادی");function n(e){e.plate&&(t.value=e.plate),e.lockNumber&&(r.value=e.lockNumber),e.stationName&&(i.value=e.stationName)}return{plate:t,lockNumber:r,stationName:i,setSelection:n}});export{u};
