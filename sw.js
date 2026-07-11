@@ -1,4 +1,4 @@
-const CACHE = 'sbike-pwa-v1'
+const CACHE = 'sbike-pwa-v2'
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -17,18 +17,41 @@ self.addEventListener('activate', (event) => {
   )
 })
 
+function shouldHandle(request) {
+  if (request.method !== 'GET') return false
+
+  let url
+  try {
+    url = new URL(request.url)
+  }
+  catch {
+    return false
+  }
+
+  // Never intercept cross-origin (map tiles, APIs, CDNs).
+  if (url.origin !== self.location.origin) return false
+
+  // Skip non-http(s) schemes.
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return false
+
+  return true
+}
+
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return
+  if (!shouldHandle(event.request)) return
 
   event.respondWith(
     caches.match(event.request).then((cached) => {
-      const network = fetch(event.request).then((response) => {
-        if (response.ok && event.request.url.startsWith(self.location.origin)) {
-          const copy = response.clone()
-          caches.open(CACHE).then((cache) => cache.put(event.request, copy))
-        }
-        return response
-      })
+      const network = fetch(event.request)
+        .then((response) => {
+          if (response && response.ok) {
+            const copy = response.clone()
+            caches.open(CACHE).then((cache) => cache.put(event.request, copy))
+          }
+          return response
+        })
+        .catch(() => cached)
+
       return cached || network
     }),
   )

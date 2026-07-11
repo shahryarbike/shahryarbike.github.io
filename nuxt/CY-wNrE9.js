@@ -1,0 +1,1 @@
+import{j as t,l as a,n as o,p as n,aj as s,c,o as r}from"./CyhIoVF8.js";const d=t({__name:"index",setup(i){const e=a();return o(()=>{e.loadToken(),n(s(e.isAuthenticated))}),(u,p)=>(r(),c("div"))}});export{d as default};

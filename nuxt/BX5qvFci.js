@@ -1,0 +1,11 @@
+import{_ as h}from"./D8la2iwj.js";import{_ as m}from"./BIS6Bi78.js";import{_ as f}from"./DkgGOPEu.js";import{_ as x}from"./EB4G7-hs.js";import{g as r,j as v,k as g,n as k,s as y,w as n,v as t,o as I,a as s,b as o,t as a,ak as w,d as M,_ as b}from"./CyhIoVF8.js";import{u as q}from"./CZqaFweW.js";import"./DMgLLmez.js";/**
+ * @license lucide-vue-next v0.474.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const L=r("HeadphonesIcon",[["path",{d:"M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3",key:"1xhozi"}]]);/**
+ * @license lucide-vue-next v0.474.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const S=r("MessageCircleIcon",[["path",{d:"M7.9 20A9 9 0 1 0 4 16.1L2 22Z",key:"vv11sd"}]]),z={class:"support-page"},B={class:"text-muted"},C={class:"phone-row"},N={class:"phone-info"},H={class:"phone-label"},P={class:"phone-number",dir:"ltr"},V={class:"text-muted"},$=v({__name:"support",setup(A){const{t:e}=g(),p=q();k(()=>p.fetchInitialData());function i(){const _=p.supportPhone||"02191000000";window.location.href=`tel:${_}`}return(_,D)=>{const c=h,l=m,u=f,d=x;return I(),y(d,{title:t(e)("support")},{default:n(()=>[s("div",z,[o(c,{padding:"28px",class:"support-hero"},{default:n(()=>[o(t(L),{size:48,class:"text-primary"}),s("h2",null,a(t(e)("support"))+" "+a(t(e)("app_name")),1),s("p",B,a(t(e)("contact_us_with_phone")),1)]),_:1}),o(c,{padding:"20px",class:"phone-card"},{default:n(()=>[s("div",C,[o(t(w),{size:22,class:"text-primary"}),s("div",N,[s("span",H,a(t(e)("call")),1),s("span",P,a(t(p).supportPhone||"021-91000000"),1)])]),o(l,{"button-text":t(e)("call"),"on-tap":i},null,8,["button-text"])]),_:1}),o(c,{padding:"20px",class:"request-card"},{default:n(()=>[o(t(S),{size:22,class:"text-primary"}),s("div",null,[s("h3",null,a(t(e)("send_request")),1),s("p",V,a(t(e)("help")),1)]),o(u,{to:"/send-request",class:"request-link"},{default:n(()=>[M(a(t(e)("send_request"))+" ←",1)]),_:1})]),_:1})])]),_:1},8,["title"])}}}),J=b($,[["__scopeId","data-v-6a278476"]]);export{J as default};
